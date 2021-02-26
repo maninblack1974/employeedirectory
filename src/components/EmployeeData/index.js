@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import DataTable from "./DataTable";
-import Nav from "./Nav";
-import API from "../utils/API";
-import "../style.css";
-import DataContext from "../utils/datacontext";
+import EmployeeTable from "../EmployeeTable/index";
+import SearchBar from "../SearchBar/index";
+import API from "../../utils/API";
+import "../EmployeeData/style.css";
+import DataContext from "../../utils/datacontext";
 
 const EmployeeData = () => {
   const [developerState, setDeveloperState] = useState({
@@ -12,10 +12,10 @@ const EmployeeData = () => {
     filteredUsers: [],
     headings: [
       { name: "Image", width: "10%", order: "descend" },
-      { name: "name", width: "10%", order: "descend" },
-      { name: "phone", width: "20%", order: "descend" },
-      { name: "email", width: "20%", order: "descend" },
-      { name: "dob", width: "10%", order: "descend" }
+      { name: "Name", width: "10%", order: "descend" },
+      { name: "Phone", width: "20%", order: "descend" },
+      { name: "Email", width: "20%", order: "descend" },
+      { name: "DOB", width: "10%", order: "descend" }
     ]
   });
 
@@ -50,7 +50,7 @@ const EmployeeData = () => {
           return 1;
         } else if (b[heading] === undefined) {
           return -1;
-        }
+         }
         else if (heading === "name") {
           return b[heading].first.localeCompare(a[heading].first);
         }else if (heading === "dob") {
@@ -101,9 +101,9 @@ const EmployeeData = () => {
     <DataContext.Provider
       value={{ developerState, handleSearchChange, handleSort }}
     >
-      <Nav />
+      <SearchBar />
       <div className="data-area">
-        {developerState.filteredUsers.length > 0 ? <DataTable /> : <div></div>}
+        {developerState.filteredUsers.length > 0 ? <EmployeeTable /> : <div></div>}
       </div>
     </DataContext.Provider>
   );

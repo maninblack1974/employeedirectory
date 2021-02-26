@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import "../style.css";
-import DataContext from "../utils/datacontext";
+import "./style.css";
+import DataContext from "../../utils/datacontext";
 
 const EmployeeInfo = () => {
   const context = useContext(DataContext);

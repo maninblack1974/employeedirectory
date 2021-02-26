@@ -1,7 +1,7 @@
 import React from "react";
-import Employees from "./components/Employees";
-import Wrapper from "./components/Wrapper";
-import Title from "./components/Title";
+import Employees from "./components/Employees/index";
+import Wrapper from "./components/Wrapper/index";
+import Title from "./components/Title/index";
 
 import "./App.css";
 
