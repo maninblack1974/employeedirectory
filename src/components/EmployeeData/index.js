@@ -12,10 +12,10 @@ const EmployeeData = () => {
     filteredUsers: [],
     headings: [
       { name: "Image", width: "10%", order: "descend" },
-      { name: "Name", width: "10%", order: "descend" },
-      { name: "Phone", width: "20%", order: "descend" },
-      { name: "Email", width: "20%", order: "descend" },
-      { name: "DOB", width: "10%", order: "descend" }
+      { name: "name", width: "10%", order: "descend" },
+      { name: "phone", width: "20%", order: "descend" },
+      { name: "email", width: "20%", order: "descend" },
+      { name: "dob", width: "10%", order: "descend" }
     ]
   });
 
@@ -50,7 +50,7 @@ const EmployeeData = () => {
           return 1;
         } else if (b[heading] === undefined) {
           return -1;
-         }
+        }
         else if (heading === "name") {
           return b[heading].first.localeCompare(a[heading].first);
         }else if (heading === "dob") {
@@ -77,7 +77,6 @@ const EmployeeData = () => {
     const filter = event.target.value;
     const filteredList = developerState.users.filter(item => {
       let values = item.name.first.toLowerCase() + " " + item.name.last.toLowerCase();
-      console.log(filter, values)
     if(values.indexOf(filter.toLowerCase()) !== -1){
       return item
     };
@@ -88,7 +87,6 @@ const EmployeeData = () => {
 
   useEffect(() => {
     API.getEmployees().then(results => {
-      console.log(results.data.results);
       setDeveloperState({
         ...developerState,
         users: results.data.results,
